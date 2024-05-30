@@ -1,4 +1,4 @@
-import { cart } from "../data/cart.js";
+import { cart, addToCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 
 let productsHTML = '';
@@ -60,6 +60,22 @@ products.forEach((product) => {
 // To show the products on the grid sections
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
+// -----------------------------------------------------
+
+function updateCartQuantity() {
+  // To make the cart number icon updated
+  let cartQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  }); 
+
+  document.querySelector('.js-cart-quantity')
+    .innerHTML = cartQuantity;
+}
+
+// -----------------------------------------------
+
 // To make the Add to Cart button interactive
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
@@ -68,39 +84,8 @@ document.querySelectorAll('.js-add-to-cart')
 
     button.addEventListener('click', () => {
       const {productId} =  button.dataset;
-
-      // To check if the products already in the cart
-      let matchingItem;
-      
-      cart.forEach((item) => {
-        if (productId === item.productId) {
-          matchingItem = item;
-        }
-      });
-      
-      // To enable the quantity selector
-      const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
-
-      const quantity = Number(quantitySelector.value);
-
-      if (matchingItem) {
-        matchingItem.quantity += quantity;
-      } else {
-        cart.push({
-          productId,
-          quantity
-        });
-      }
-
-      // To make the cart number icon updated
-      let cartQuantity = 0;
-
-      cart.forEach((item) => {
-        cartQuantity += item.quantity;
-      }); 
-
-      document.querySelector('.js-cart-quantity')
-        .innerHTML = cartQuantity;
+      addToCart(productId);
+      updateCartQuantity();
 
       // To make the popup added message
       const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`)
