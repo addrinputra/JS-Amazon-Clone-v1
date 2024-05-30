@@ -1,3 +1,5 @@
+import { cart } from "../data/cart.js";
+
 let productsHTML = '';
 
 products.forEach((product) => {
@@ -54,8 +56,10 @@ products.forEach((product) => {
   `;
 });
 
+// To show the products on the grid sections
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
+// To make the Add to Cart button interactive
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
 
@@ -64,6 +68,7 @@ document.querySelectorAll('.js-add-to-cart')
     button.addEventListener('click', () => {
       const {productId} =  button.dataset;
 
+      // To check if the products already in the cart
       let matchingItem;
       
       cart.forEach((item) => {
@@ -72,6 +77,7 @@ document.querySelectorAll('.js-add-to-cart')
         }
       });
       
+      // To enable the quantity selector
       const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
 
       const quantity = Number(quantitySelector.value);
@@ -85,6 +91,7 @@ document.querySelectorAll('.js-add-to-cart')
         });
       }
 
+      // To make the cart number icon updated
       let cartQuantity = 0;
 
       cart.forEach((item) => {
