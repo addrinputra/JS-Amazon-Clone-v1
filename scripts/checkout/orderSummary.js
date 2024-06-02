@@ -10,6 +10,7 @@ import { formatCurrency } from "../utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
 import { renderPaymentSummary } from "./paymentSummary.js";
+import { renderCheckoutHeader } from "./checkoutHeader.js";
 
 export function renderOrderSummary() {
   
@@ -135,8 +136,8 @@ export function renderOrderSummary() {
         const {productId} = link.dataset;
         removeFromCart(productId);
 
+        renderCheckoutHeader();
         renderOrderSummary();
-        updateCartQuantity();
         renderPaymentSummary();
       });
     });
@@ -182,7 +183,7 @@ export function renderOrderSummary() {
 
         quantityLabel.innerHTML = newQuantity;
 
-        updateCartQuantity();
+        renderCheckoutHeader();
         renderPaymentSummary();
 
       });
@@ -196,15 +197,7 @@ export function renderOrderSummary() {
       });
     });
 
-  // To make the quantity links updated
-  function updateCartQuantity() {
-    const cartQuantity = calculateCartQuantity();
-
-    document.querySelector('.js-return-to-home-link')
-      .innerHTML = `${cartQuantity} items`;
-  }
-
-  updateCartQuantity();
+  renderCheckoutHeader();
 
   // To make the delivery date options interactive
   document.querySelectorAll('.js-delivery-option')
