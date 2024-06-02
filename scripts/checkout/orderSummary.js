@@ -163,13 +163,9 @@ export function renderOrderSummary() {
         const container = document.querySelector(`.js-cart-item-container-${productId}`);
 
         container.classList.remove('is-editing-quantity');
-        
-        // To make the quantity label updated
-        const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`);
-
-        quantityLabel.innerHTML = newQuantity;
 
         renderCheckoutHeader();
+        renderOrderSummary();
         renderPaymentSummary();
 
       });
