@@ -35,10 +35,10 @@ describe('test suite: renderOrderSummary', () => {
       document.querySelectorAll('.js-cart-item-container').length
     ).toEqual(2);
     expect(
-      document.querySelector(`.js-product-quantity-${productId1}`).innerText
+      document.querySelector(`.js-test-product-quantity-${productId1}`).innerText
     ).toContain('Quantity: 2');
     expect(
-      document.querySelector(`.js-product-quantity-${productId2}`).innerText
+      document.querySelector(`.js-test-product-quantity-${productId2}`).innerText
     ).toContain('Quantity: 1');
     expect(
       document.querySelector(`.js-test-product-name-${productId1}`).innerText
@@ -60,10 +60,10 @@ describe('test suite: renderOrderSummary', () => {
       document.querySelectorAll('.js-cart-item-container').length
     ).toEqual(1);
     expect(
-      document.querySelector(`.js-cart-item-container-${productId1}`)
+      document.querySelector(`.js-test-cart-item-container-${productId1}`)
     ).toEqual(null);
     expect(
-      document.querySelector(`.js-cart-item-container-${productId2}`)
+      document.querySelector(`.js-test-cart-item-container-${productId2}`)
     ).not.toEqual(null);
     expect(cart.length).toEqual(1);
     expect(cart[0].productId).toEqual(productId2);

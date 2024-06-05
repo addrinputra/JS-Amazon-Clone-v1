@@ -32,7 +32,7 @@ export function renderOrderSummary() {
     cartSummaryHTML += `
       <div class="cart-item-container 
       js-cart-item-container
-      js-cart-item-container-${matchingProduct.id}">
+      js-test-cart-item-container-${matchingProduct.id}">
         <div class="delivery-date">
           Delivery date: ${dateString}
         </div>
@@ -48,7 +48,7 @@ export function renderOrderSummary() {
             <div class="product-price js-test-product-price-${matchingProduct.id}">
               $${formatCurrency(matchingProduct.priceCents)}
             </div>
-            <div class="product-quantity js-product-quantity-${matchingProduct.id}">
+            <div class="product-quantity js-test-product-quantity-${matchingProduct.id}">
               <span>
                 Quantity: <span class="quantity-label js-quantity-label-${matchingProduct.id}">${cartItem.quantity}</span>
               </span>
