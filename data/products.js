@@ -134,10 +134,13 @@ export function loadProductsFetch() {
     });
 
     console.log('load products');
-  });
+  }).catch((error) => {
+    console.log('Unexpected eror. Please try again later');
+  }); // we comment out this catch because we use async await in checkout.js with trycatch
 
   return promise;
 }
+
 
 // loadProductsFetch().then(() => {
 //   console.log('next step');
@@ -159,6 +162,10 @@ export function loadProducts(fun) {
     console.log('load products');
 
     fun();
+  });
+
+  xhr.addEventListener('error', (error) => {
+    console.log('Unexpected eror. Please try again later');
   });
 
   xhr.open('GET', 'https://supersimplebackend.dev/products');
