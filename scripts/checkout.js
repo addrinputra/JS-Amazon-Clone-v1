@@ -14,12 +14,11 @@ import '../data/backend-practice.js';*/
 // throw can create an error in the future, so we use reject
 async function loadPage() {
   try {
-    // throw 'error1';
-
-    await loadProductsFetch();
-
-    await loadCartFetch();
-    
+    await Promise.all([
+      // throw 'error1';
+      loadProductsFetch(),
+      loadCartFetch()
+    ]);
   } catch (error) {
     console.log('Unexpected eror. Please try again later');
   }
