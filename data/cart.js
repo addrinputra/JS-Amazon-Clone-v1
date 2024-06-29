@@ -55,10 +55,6 @@ export function addToCart(productId) {
   
   const quantity = quantitySelector ? Number(quantitySelector.value) : orderQuantity;
 
-  // if (!quantitySelector) {
-  //   quantity = orderQuantity;
-  // }
-
   if (matchingItem) {
     matchingItem.quantity += quantity;
   } else {
