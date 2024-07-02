@@ -37,7 +37,7 @@ describe('test suite: renderOrderSummary', () => {
 
   it('displays the cart', () => {
     expect(
-      document.querySelectorAll('.js-cart-item-container').length
+      document.querySelectorAll('.js-test-cart-item-container').length
     ).toEqual(2);
     expect(
       document.querySelector(`.js-test-product-quantity-${productId1}`).innerText
@@ -62,13 +62,13 @@ describe('test suite: renderOrderSummary', () => {
   it('remove a product', () => {
     document.querySelector(`.js-delete-link-${productId1}`).click();
     expect(
-      document.querySelectorAll('.js-cart-item-container').length
+      document.querySelectorAll('.js-test-cart-item-container').length
     ).toEqual(1);
     expect(
-      document.querySelector(`.js-test-cart-item-container-${productId1}`)
+      document.querySelector(`.js-cart-item-container-${productId1}`)
     ).toEqual(null);
     expect(
-      document.querySelector(`.js-test-cart-item-container-${productId2}`)
+      document.querySelector(`.js-cart-item-container-${productId2}`)
     ).not.toEqual(null);
     expect(cart.length).toEqual(1);
     expect(cart[0].productId).toEqual(productId2);
