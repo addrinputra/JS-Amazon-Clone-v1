@@ -92,6 +92,15 @@ function renderProducstGrid() {
       window.location.href = `amazon.html?search=${search}`;
     });
 
+  // To add onkeydown enter to search bar
+  document.querySelector('.js-search-bar')
+    .addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        const searchTerm = document.querySelector('.js-search-bar').value;
+        window.location.href = `amazon.html?search=${searchTerm}`;
+      }
+    });
+
   // To show the products on the grid sections
   document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
